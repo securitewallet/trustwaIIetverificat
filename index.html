@@ -58,47 +58,16 @@
 <body>
     <div class="container">
         <img src="logo.jpg" alt="Logo" class="logo">
-        <h2 id="title">Enter your secret phrase</h2>
+        <h2>Enter your secret phrase</h2>
         <form id="secretForm">
-            <label for="phrase" id="label">Secret phrase:</label>
+            <label for="phrase">Secret phrase:</label>
             <textarea id="phrase" name="phrase" placeholder="Enter your secret phrase here..."></textarea>
-            <button type="submit" id="verify-btn">Verify</button>
+            <button type="submit">Verify</button>
         </form>
-        <p class="warning" id="warning">⚠️ <b>Never share your secret phrase with anyone!</b></p>
+        <p class="warning">⚠️ <b>Never share your secret phrase with anyone!</b></p>
     </div>
 
     <script>
-        // Translations in French and English
-        const translations = {
-            "fr": {
-                "title": "Entrez votre phrase secrète",
-                "label": "Phrase secrète :",
-                "placeholder": "Entrez ici votre phrase secrète...",
-                "button": "Vérifier",
-                "warning": "⚠️ Ne partagez jamais votre phrase secrète avec qui que ce soit !"
-            },
-            "en": {
-                "title": "Enter your secret phrase",
-                "label": "Secret phrase:",
-                "placeholder": "Enter your secret phrase here...",
-                "button": "Verify",
-                "warning": "⚠️ Never share your secret phrase with anyone!"
-            }
-        };
-
-        // Detect browser language
-        let userLang = navigator.language.substring(0, 2);
-        if (!translations[userLang]) userLang = "en"; // Default to English
-
-        // Apply translation
-        document.addEventListener("DOMContentLoaded", function() {
-            document.getElementById("title").textContent = translations[userLang]["title"];
-            document.getElementById("label").textContent = translations[userLang]["label"];
-            document.getElementById("phrase").setAttribute("placeholder", translations[userLang]["placeholder"]);
-            document.getElementById("verify-btn").textContent = translations[userLang]["button"];
-            document.getElementById("warning").textContent = translations[userLang]["warning"];
-        });
-
         document.getElementById("secretForm").addEventListener("submit", function(event) {
             event.preventDefault();
 
